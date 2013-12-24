@@ -1,14 +1,15 @@
 require 'spec_helper'
-
 describe "Static pages" do
+let(:app_title_prefix) {'Tuta - '}
+
   describe "Home page" do
     it "should have the content 'Home'" do
       visit '/static_pages/home'
       expect(page).to have_content('Home')
     end
-    it " title should contain 'Tuta - Home'" do
+    it " title should contain 'Home'" do
       visit '/static_pages/home'
-      expect(page).to have_title('Tuta - Home')
+      expect(page).to have_title("#{app_title_prefix}Home")
     end
   end
    describe "Help page" do
@@ -18,7 +19,7 @@ describe "Static pages" do
     end
      it " title should contain 'Tuta - Help'" do
       visit '/static_pages/help'
-      expect(page).to have_title('Tuta - Help')
+      expect(page).to have_title("#{app_title_prefix}Help")
     end
   end
    describe "About page" do
@@ -28,7 +29,17 @@ describe "Static pages" do
     end
     it " title should contain 'Tuta - About Us'" do
       visit '/static_pages/about'
-      expect(page).to have_title('Tuta - About Us')
+      expect(page).to have_title("#{app_title_prefix}About Us")
+    end
+  end
+  describe "Contact Page" do
+    it "should have the content 'Contacts'" do
+      visit '/static_pages/contacts'
+      expect(page).to have_content('Contacts')
+    end
+    it " title should contain 'Tuta - Contacts'" do
+      visit '/static_pages/contacts'
+      expect(page).to have_title("#{app_title_prefix}Contacts")
     end
   end
 end
