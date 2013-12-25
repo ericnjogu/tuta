@@ -7,9 +7,13 @@ let(:app_title_prefix) {'Tuta - '}
       visit '/static_pages/home'
       expect(page).to have_content('Home')
     end
-    it " title should contain 'Home'" do
+    it " title should be be Tuta'" do
       visit '/static_pages/home'
-      expect(page).to have_title("#{app_title_prefix}Home")
+      expect(page).to have_title("Tuta")
+    end
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title(" - Home")
     end
   end
    describe "Help page" do
